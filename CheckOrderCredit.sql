@@ -9,12 +9,10 @@ BEGIN
         DECLARE @ProductPrice DECIMAL(18, 2);
         DECLARE @OrderCost DECIMAL(18, 2);
 
-    
         SELECT @CreditLimit = CreditLimit
         FROM dbo.CustomerTBL
         WHERE CustomerID = @CustomerID;
 
-       
         IF @CreditLimit IS NULL
         BEGIN
             THROW 50001, FORMATMESSAGE('CustomerID %d not found.', @CustomerID), 1;
